@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phish Guard URL risk demo">
+  <title>Phish Guard — URL Risk Scanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Phish Guard home">
+      <span class="shield">◆</span><span>Phish<span class="accent">Guard</span></span>
+    </a>
+    <span class="tag">URL SECURITY DEMO</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> BROWSER SECURITY · URL ANALYSIS</div>
+      <h1>Stop. Check.<br><span class="accent">Stay protected.</span></h1>
+      <p class="intro">Check a URL for common phishing warning signs before you visit it.</p>
+    </section>
+
+    <section class="scanner panel">
+      <label for="urlInput">Website URL</label>
+      <div class="input-row">
+        <span class="link-icon">↗</span>
+        <input id="urlInput" type="text" inputmode="url" autocomplete="url"
+          placeholder="https://example.com/login" aria-describedby="inputHelp">
+        <button id="scanBtn" type="button">Scan URL <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="inputHelp" class="hint">Enter a URL to analyze its visible structure. The demo does not open or visit the submitted website.</p>
+      <p id="error" class="error" role="alert" hidden></p>
+      <div class="examples">
+        <span>Try an example:</span>
+        <button class="example" type="button" data-url="https://www.wikipedia.org/">Wikipedia</button>
+        <button class="example" type="button" data-url="http://192.168.1.10/verify-account">IP + HTTP</button>
+        <button class="example" type="button" data-url="http://secure-login-account-verify.example.com/update">Suspicious keywords</button>
+      </div>
+    </section>
+
+    <section id="result" class="results" aria-live="polite" hidden>
+      <div class="result-head">
+        <div><p class="eyebrow">SCAN RESULT</p><h2>URL risk assessment</h2></div>
+        <span id="levelBadge" class="level-badge">—</span>
+      </div>
+      <div class="result-grid">
+        <article class="panel score-panel">
+          <p class="muted">Indicative risk score</p>
+          <div class="score-wrap">
+            <div id="scoreRing" class="score-ring"><div class="score-inner"><strong id="score">0</strong><span>/100</span></div></div>
+          </div>
+          <h3 id="resultTitle">Analysis complete</h3>
+          <p id="summary" class="muted"></p>
+          <p id="host" class="host"></p>
+        </article>
+        <article class="panel details-panel">
+          <h3>Signals found</h3>
+          <ul id="reasons" class="reason-list"></ul>
+          <h3 class="feature-title">URL indicators</h3>
+          <div id="features" class="feature-grid"></div>
+        </article>
+      </div>
+      <p class="disclaimer"><strong>Demo limitation:</strong> this score is based on simple URL heuristics, not a validated production phishing model. A low score does not guarantee a site is safe. Do not enter passwords or sensitive data on unfamiliar sites.</p>
+    </section>
+
+    <section class="how">
+      <h2>How the demo works</h2>
+      <div class="how-grid">
+        <article><span>01</span><h3>Inspect the URL</h3><p>Checks URL length, host structure, HTTPS, IP-address hosts and suspicious terms.</p></article>
+        <article><span>02</span><h3>Calculate a score</h3><p>Combines visible warning signs into an illustrative score from 0 to 100.</p></article>
+        <article><span>03</span><h3>Explain the signals</h3><p>Shows the indicators that contributed to the result so you can review them.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><span>Phish Guard</span><span>Educational demo · No submitted URL is fetched by this page</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
