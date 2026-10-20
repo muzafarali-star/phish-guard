@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phish Guard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="../icons/icon32.png" alt="" width="24" height="24">
+      <h1>Phish Guard</h1>
+    </header>
+
+    <div id="loading" class="msg">Analyzing this page&hellip;</div>
+    <div id="na" class="msg" hidden>Only regular web pages (http/https) can be analyzed.</div>
+
+    <main id="result" hidden>
+      <div class="top">
+        <div class="gauge" id="gauge"><div class="inner"><span id="score">0</span><small>/ 100</small></div></div>
+        <div class="summary">
+          <span id="pill" class="pill">Safe</span>
+          <div id="host" class="host"></div>
+          <div id="prob" class="prob"></div>
+        </div>
+      </div>
+
+      <div id="modelWarn" class="warn" hidden></div>
+
+      <h2>Why</h2>
+      <ul id="reasons"></ul>
+
+      <details>
+        <summary>URL features</summary>
+        <table id="features"></table>
+      </details>
+      <details id="intelBox">
+        <summary>Threat intelligence</summary>
+        <div id="intel"></div>
+      </details>
+
+      <button id="trustBtn" class="btn">Trust this site</button>
+    </main>
+
+    <section class="settings">
+      <label>Warn me at
+        <select id="threshold">
+          <option value="41">Medium and above (41+)</option>
+          <option value="61">High and above (61+)</option>
+          <option value="81">Critical only (81+)</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="lookups"> Online threat-intelligence lookups
+      </label>
+      <p class="hint">Off by default. When on, the site's domain name is sent to rdap.org (registration date) and dns.google (DNS info).</p>
+    </section>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

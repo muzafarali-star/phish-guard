@@ -1,0 +1,4 @@
+{
+  "_note": "Local list of known-malicious domains (matches the domain and all its subdomains). Add one domain per entry, lowercase, no scheme. Example: \"bad-site.example\".",
+  "domains": []
+}
